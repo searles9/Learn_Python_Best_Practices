@@ -44,6 +44,63 @@ docstring
 ***
 ***
 # One line docstring
-* 
+* you should always use triple quotes to define docstrings
+* Example:
+```
+"""Return the sum of a and b"""
+```
 ***
 ***
+# Multi line docstrings
+* example
+```
+def func(a,b):
+    """Summary line.
+
+    Elaborate description of the function.
+    a -- desc of a (default 0.0)
+    b -- desc of b (default 0.0)
+    """
+```
+* example 2:
+```
+def func(a,b):
+    """
+    Summary line.
+
+    Elaborate description of the function.
+    a -- desc of a (default 0.0)
+    b -- desc of b (default 0.0)
+    """
+
+```
+* Items to describe for a function:
+    * behavior 
+    * arguments, optional arguments
+    * return values
+    * side effects
+    * exceptions and restrictions
+* Items to describe for a module
+    * classes
+    * exceptions
+    * functions
+    * any other object
+    * one line summary of each
+* Items to describe for a class
+    * behavior
+    * public methods
+    * instance variables
+    * docstrings for individual methods ... including __init__()
+
+***
+***
+# Reading codstrings using __doc__
+* ex:
+```
+def func(a,b):
+    """
+    docstring
+    """
+
+print(func.__doc__)
+```
