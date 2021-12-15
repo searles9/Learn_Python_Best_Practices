@@ -28,4 +28,23 @@ long_list = [
 ***
 ***
 # List comprehension and when to use it
-* 
+* use list comprehension when it makes your code easier to read
+* syntax: ```[expression for item in iterable]```
+* example:
+```
+pizza_letters = [letter.upper() for letter in "pizza"]
+pizza_letters = [letter * 2 for letter in "pizza"]
+pizza_letters = [letter for letter in "pizza"]
+nums = [random.randint(1, 15) for i in range(250)]
+theitems = [myfunction(var) for var in iterable]
+the_nums = [i for i in range(50) if i % 2 == 0]
+```
+***
+***
+# Dictionary comprehension
+* syntax: ```{key: value for elem in iterable }
+* example:
+```
+my_dict = {i: i*2 for i in range(2, 8)}
+my_dict = {item: round(price*1.2,3) for (item, price) in old_prices.items() }
+```
