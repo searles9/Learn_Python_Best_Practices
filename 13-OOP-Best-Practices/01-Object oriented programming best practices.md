@@ -143,4 +143,64 @@ isinstance(my_circle, Circle)
 ***
 ***
 # How to import a class
-*
+* when importing a class from a class containing module it is usually ok to do this (same folder): ```from myclass import MyClass```
+    * myclass is the module
+    * MyClass is the class
+* if the module is in a different folder do this:```from foo.bar.yourclass import YourClass``` 
+    * foo.bar.yourclass is the path to the module
+    * YourClass is the class
+***
+***
+# Implement rich comparison methods 
+* these are special methods that provide additional functionality to your class when you implement them
+    * __eq__ - equal to
+    * __le__ - less than or equal to
+    * __ne__ - not equal to
+    * __gt__ - greater than 
+    * __lt__ - less than
+    * __ge__ - greater than or equal to 
+* define those to customize how the instances in the class are compared
+* for example if you have 2 back account instances of a class - you can define a method that can evaluate whether the 2 instances are equal to 
+```
+class BankAccount:
+
+    def __init__(self, balance):
+        self.balance = balance 
+
+    def __eq__(self, other):
+        return self.balance == other.balance
+
+    def __lt__(self, other):
+        return self.balance <= other.balance
+
+nora_acct = BankAccount(4500)
+jack_acct = BankAccount(7000)
+
+# is False
+nora_acct == jack_acct 
+```
+* It is best practice to implement all siz operation so that confusion doesnt arise (not just 2 like shown above)
+* the functools.total_ordering() decorator provides a tool to generate missing comparison methods
+* example use:
+```
+from functools import total_ordering
+
+@total_ordering
+class BankAccount:
+
+def __init__(self, balance):
+        self.balance = balance 
+
+    def __eq__(self, other):
+        return self.balance == other.balance
+
+    def __lt__(self, other):
+        return self.balance <= other.balance
+
+    # The decorator will generate the other 4 comparison methods 
+```
+* the tool may cause slower execution 
+***
+***
+# Inheritance best practices
+* If your class is intended to be subclassed, and you have attributes that you do not want subclasses to use, consider naming them with double leading underscores and no trailing underscores. ```__client_id```
